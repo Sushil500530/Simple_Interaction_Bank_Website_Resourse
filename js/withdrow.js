@@ -12,11 +12,20 @@
 */
 // step -1 :
 document.getElementById('btn-withdrow').addEventListener('click',function(){
+
     // step -2 :
+
     const withdrowField = document.getElementById('input-withdrow')
     const newWithdrowAmountString = withdrowField.value ;
     const newWithdrowAmount = parseFloat(newWithdrowAmountString)
     // console.log(typeof newWithdrowAmount) 
+
+        //  step -7 : clear the input field  
+        withdrowField.value = '' ;
+    if(isNaN(newWithdrowAmount)){
+        alert('Please Provide a valid number...!!')
+        return ;
+    }
 
     // step -3 :
     const withdrowTotalElement= document.getElementById('withdrow-total') ;
@@ -24,19 +33,24 @@ document.getElementById('btn-withdrow').addEventListener('click',function(){
     const previousWithdrowTotal = parseFloat(withdrowTotalString) ;
     // console.log(previousWithdrowTotal)
 
-    // step-4 :
-     const currentWithdrowTotal = previousWithdrowTotal + newWithdrowAmount ;
-     withdrowTotalElement.innerText = currentWithdrowTotal;
-
+ 
     // step -5 
     const balanceTotalElement = document.getElementById('balance-total') ;
     const previousBalanceTotalString = balanceTotalElement.innerText ;
     const previousBalanceTotal = parseFloat(previousBalanceTotalString)
     // console.log(typeof previousBalanceTotal)
+  // validation : age joto tuku balance cilo setar theke jodi besi balance tulte chai tahle akta massage dekhabe
+
+    if(newWithdrowAmount > previousBalanceTotal){
+        alert('Baap er Bank a eto taka nai...!!')
+        return ;
+    }
+    // step-4 :
+    const currentWithdrowTotal = previousWithdrowTotal + newWithdrowAmount ;
+    withdrowTotalElement.innerText = currentWithdrowTotal;
 
     // step -6 
     const totalWithdrow = previousBalanceTotal - newWithdrowAmount ;
     balanceTotalElement.innerText = totalWithdrow
-    //  step -7 : clear the input field 
-     withdrowField.value = '' ;
+
 })
