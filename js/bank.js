@@ -6,6 +6,14 @@ document.getElementById('btn-deposit').addEventListener('click',function(){
     const deposit = document.getElementById('input-deposit');
     const newDepositAmountString = deposit.value ;
     const newDepositAmount = parseFloat(newDepositAmountString)
+
+    
+      // step - : clear the deposit field 
+      deposit.value ='' ;
+    if(isNaN(newDepositAmount)){
+        alert('Please Provide a valid number...!!')
+        return ;
+    }
     // console.log(newDepositAmount)
     // console.log(depositAmount)
     // step -3 : get the current deposit total 
@@ -28,7 +36,6 @@ document.getElementById('btn-deposit').addEventListener('click',function(){
       const currentBalanceTotal = balanceTotal + newDepositAmount ;
       // set the balance total 
     balanceElement.innerText = currentBalanceTotal ;
-    // step - : clear the deposit field 
-    deposit.value ='' ;
+
 })
 
