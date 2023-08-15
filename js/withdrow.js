@@ -28,7 +28,15 @@ document.getElementById('btn-withdrow').addEventListener('click',function(){
      const currentWithdrowTotal = previousWithdrowTotal + newWithdrowAmount ;
      withdrowTotalElement.innerText = currentWithdrowTotal;
 
- 
+    // step -5 
+    const balanceTotalElement = document.getElementById('balance-total') ;
+    const previousBalanceTotalString = balanceTotalElement.innerText ;
+    const previousBalanceTotal = parseFloat(previousBalanceTotalString)
+    // console.log(typeof previousBalanceTotal)
+
+    // step -6 
+    const totalWithdrow = previousBalanceTotal - newWithdrowAmount ;
+    balanceTotalElement.innerText = totalWithdrow
     //  step -7 : clear the input field 
      withdrowField.value = '' ;
 })
